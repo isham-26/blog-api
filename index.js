@@ -8,13 +8,10 @@ import categoryRouter from "./routes/categories.js";
 import  Multer  from "multer";
 import path from 'path';
 import * as url from 'url';
-    const __filename = url.fileURLToPath(import.meta.url);
     const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 dotenv.config();
 const app = express();
 app.use(express.json());
-console.log("dirname");
-console.log(__dirname);
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
@@ -41,6 +38,6 @@ app.use("/api/users",usersRouter)
 app.use("/api/posts",postsRouter)
 app.use("/api/categories",categoryRouter)
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Backend is running");
 });

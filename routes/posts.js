@@ -78,7 +78,7 @@ postsRouter.get("/", async (req, res) => {
       posts = await Post.find({ username });
     } else if (catName) {
       posts = await Post.find({
-        cat: {
+        categories: {
           $in: [catName],
         },
       });
